@@ -15,7 +15,6 @@ export class FairPriceProjectPage{
 
     async verifyProjectLoaded(name) {
     await expect(this.projectName).toBeVisible();
-    
     await expect(this.projectPrice).toBeVisible();      
   }
 
@@ -27,7 +26,6 @@ export class FairPriceProjectPage{
 
   async verifyComparableProperty(){
     await expect(this.comparableProperty).toBeVisible();
-
     await this.comparableProperty.screenshot({ path: 'reports/comparable-result.png' });
   }
 

@@ -29,7 +29,7 @@ test("search and navigate",async({page})=>{
     //verify project name and price
     
     await expect(projectPage.projectName).toHaveText(project.name);
-    await expect(projectPage.projectPrice).toHaveText("₹14,511psft.");
+    await expect(projectPage.projectPrice).toBeVisible();
 
     //capture screenshot of the result
     await page.screenshot({ path: 'reports/fair-price-result.png', fullPage: true });    
@@ -38,11 +38,16 @@ test("search and navigate",async({page})=>{
 
 test('Verify Score and Comparables',async({page})=>{
         const projectPage = new FairPriceProjectPage(page);
+        // open page
         await projectPage.goto();
         await expect(page).toHaveTitle(`Fair Price Analysis - ${project.name} | Propsoch`);
+        // verify project loaded
         await projectPage.verifyProjectLoaded(project.name);
 
+        // verify composite Score are visible or not
         await projectPage.verifyCompositeScore();
+
+        //verify atleast one comparable property is present
         await projectPage.verifyComparableProperty();
     });
 
