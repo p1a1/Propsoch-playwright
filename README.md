@@ -65,7 +65,7 @@ The test runner is configured in `playwright.config.js`.
 - `pom/fairPriceProject.page.js`
   - Project page object for verifying loaded project details, score, and comparables
 - `testdata/project.js`
-  - Test data values used in the suite, such as `project.name` and `project.noname`
+  - Test data values used in the suite, such as `project.name` and `project.absent_name`
 - `fixtures/baseTest.js`
   - Custom Playwright fixture that adds `afterEach` error handling
   - Captures failure screenshots to `reports/` when a test fails
