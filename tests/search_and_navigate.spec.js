@@ -39,7 +39,7 @@ test("search and navigate",async({page})=>{
 test('Verify Score and Comparables',async({page})=>{
         const projectPage = new FairPriceProjectPage(page);
         // open page
-        await projectPage.goto();
+        await projectPage.goto(project.projectURL);
         await expect(page).toHaveTitle(`Fair Price Analysis - ${project.name} | Propsoch`);
         // verify project loaded
         await projectPage.verifyProjectLoaded(project.name);

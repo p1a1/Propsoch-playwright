@@ -9,8 +9,8 @@ export class FairPriceProjectPage{
     this.comparableProperty=page.locator("//div[@class='flex flex-col']/div[1]/div/div[1]")
     }
 
-    async goto() {
-        await this.page.goto('/fair-price-calculator/prestige-somerville-whitefield/351');
+    async goto(url) {
+        await this.page.goto(url);
     }
 
     async verifyProjectLoaded(name) {
