@@ -13,7 +13,7 @@ export class FairPriceHomePage{
 
     }
 
-    async clickselectProperty() {
+    async clickSelectProperty() {
     await this.selectproperty.click();
   }
     async searchProject(name) {
@@ -22,9 +22,13 @@ export class FairPriceHomePage{
  
   async clickSuggestion(name) {
     const suggestioncount = await this.suggestions.count();
+    if (suggestioncount === 0) {
+  throw new Error("No suggestions found for given project");
+    }
     for (let i=0; i<suggestioncount; i++){
         if (await this.suggestions.nth(i).locator("h2").textContent() === name) {
             await this.suggestions.nth(i).click();
+            break;  
     }
     }
    

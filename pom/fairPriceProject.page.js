@@ -9,13 +9,9 @@ export class FairPriceProjectPage{
     this.comparableProperty=page.locator("//div[@class='flex flex-col']/div[1]/div/div[1]")
     }
 
-    async goto(url) {
-        await this.page.goto(url);
-    }
-
-    async verifyProjectLoaded(name) {
-    await expect(this.projectName).toBeVisible();
-    await expect(this.projectPrice).toBeVisible();      
+    async verifyProjectLoaded() {
+    await expect(this.projectName, "Project name is not visible").toBeVisible();
+    await expect(this.projectPrice,"Price is not visible").toBeVisible();      
   }
 
   async verifyCompositeScore(){

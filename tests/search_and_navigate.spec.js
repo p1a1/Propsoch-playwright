@@ -15,7 +15,7 @@ test("search and navigate",async({page})=>{
     await expect(page).toHaveTitle('Fair Price Calculator | Check Apartment Prices & Property Fairness in Bangalore | Propsoch');
 
     // Step 2: Search project
-    await home.clickselectProperty();
+    await home.clickSelectProperty();
     await home.searchProject(project.name);
     
     // Step 3: Click suggestion by its text value
@@ -39,10 +39,10 @@ test("search and navigate",async({page})=>{
 test('Verify Score and Comparables',async({page})=>{
         const projectPage = new FairPriceProjectPage(page);
         // open page
-        await projectPage.goto(project.projectURL);
+        await page.goto(project.projectURL)
         await expect(page).toHaveTitle(`Fair Price Analysis - ${project.name} | Propsoch`);
         // verify project loaded
-        await projectPage.verifyProjectLoaded(project.name);
+        await projectPage.verifyProjectLoaded();
 
         // verify composite Score are visible or not
         await projectPage.verifyCompositeScore();
@@ -59,7 +59,7 @@ test("no results found",async({page})=>{
     await expect(page).toHaveTitle('Fair Price Calculator | Check Apartment Prices & Property Fairness in Bangalore | Propsoch');
 
     // Step 2: Search project
-    await home.clickselectProperty();
+    await home.clickSelectProperty();
     await home.searchProject(project.absent_name);
     // Step 3: Verify no suggestions
     await expect(home.noResults).toBeVisible();
